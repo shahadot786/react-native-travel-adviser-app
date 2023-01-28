@@ -7,16 +7,27 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Avatar, NotFound } from '../assets';
 import GoogleApi from '../components/GoogleApi';
 import Menu from '../components/Menu';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import ItemCards from '../components/ItemCards';
+import { getPlaceData } from '../api';
 
 const DiscoverScreen = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [mainData, setMainData] = useState([]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    getPlaceData().then((data) => {
+      setMainData(data);
+      setInterval(() => {
+        setIsLoading(false);
+      }, 2000);
+    });
+  }, []);
 
   return (
     <SafeAreaView className="flex-1 bg-white relative">
@@ -64,7 +75,9 @@ const DiscoverScreen = () => {
             {/* Card  */}
             {mainData?.length > 0 ? (
               <>
-                <ItemCards />
+                <View className="flex-row flex-wrap mt-8">
+                <ItemCards cardData={mainData} />
+                </View>
               </>
             ) : (
               <>

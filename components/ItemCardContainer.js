@@ -10,20 +10,41 @@ const ItemCardContainer = ({ imageUrl, title, location }) => {
         source={{ uri: imageUrl }}
         className="w-full h-52 rounded-md object-cover"
       />
-      <Text className="text-[#15c55d] text-[16px] font-bold pl-2">
-        {title?.length > 14 ? `${title.slice(0, 14)}..` : title}
-      </Text>
-      <View className="pl-2 pb-2 flex-row items-center space-x-1">
-        <FontAwesome
-          className="pl-2"
-          name="map-marker"
-          size={24}
-          color="#A0C4C7"
-        />
-        <Text className="text-[#A0C4C7] text-[14px] font-bold">
-          {location?.length > 18 ? `${location.slice(0, 14)}..` : location}
-        </Text>
-      </View>
+      {title ? (
+        <>
+          <Text className="text-[#15c55d] text-[16px] font-bold pl-2">
+            {title?.length > 14 ? `${title.slice(0, 14)}..` : title}
+          </Text>
+          <View className="pl-2 pb-2 flex-row items-center space-x-1">
+            <FontAwesome
+              className="pl-2"
+              name="map-marker"
+              size={24}
+              color="#A0C4C7"
+            />
+            <Text className="text-[#A0C4C7] text-[14px] font-bold">
+              {location?.length > 18 ? `${location.slice(0, 14)}..` : location}
+            </Text>
+          </View>
+        </>
+      ) : (
+        <>
+          <Text className="text-[#15c55d] text-[16px] font-bold pl-2">
+            No Name Found
+          </Text>
+          <View className="pl-2 pb-2 flex-row items-center space-x-1">
+            <FontAwesome
+              className="pl-2"
+              name="map-marker"
+              size={24}
+              color="#A0C4C7"
+            />
+            <Text className="text-[#A0C4C7] text-[14px] font-bold">
+              No Location Found
+            </Text>
+          </View>
+        </>
+      )}
     </TouchableOpacity>
   );
 };

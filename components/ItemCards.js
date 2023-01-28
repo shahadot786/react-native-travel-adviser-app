@@ -1,27 +1,25 @@
-import { View } from 'react-native';
 import React from 'react';
 import ItemCardContainer from './ItemCardContainer';
 
-const ItemCards = () => {
+const ItemCards = ({ cardData }) => {
+  //console.log(cardData);
   return (
-    <View className="px-4 mt-8 flex-row justify-center items-center">
-      <ItemCardContainer
-        key={'102'}
-        imageUrl={
-          'https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-        }
-        title={'Something One'}
-        location={'Dhaka'}
-      />
-      <ItemCardContainer
-        key={'101'}
-        imageUrl={
-          'https://images.pexels.com/photos/541216/pexels-photo-541216.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-        }
-        title={'Something two'}
-        location={'Dhaka Bangladesh'}
-      />
-    </View>
+    <>
+      {cardData.map((data, index) => {
+        return (
+          <ItemCardContainer
+            key={index}
+            imageUrl={
+              data?.photo?.images?.medium?.url
+                ? data?.photo?.images?.medium?.url
+                : 'https://cdn.pixabay.com/photo/2015/10/30/12/22/eat-1014025_1280.jpg'
+            }
+            title={data?.name}
+            location={data?.location_string}
+          />
+        );
+      })}
+    </>
   );
 };
 
