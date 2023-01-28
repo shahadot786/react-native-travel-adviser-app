@@ -2,8 +2,14 @@ import { View, Text, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
 
 const MenuContainer = ({ title, imageUrl, type, setType }) => {
+  const handelPress = () => {
+    setType(title.toLowerCase());
+  };
   return (
-    <TouchableOpacity className="items-center justify-center space-y-2">
+    <TouchableOpacity
+      className="items-center justify-center space-y-2"
+      onPress={handelPress}
+    >
       <View
         className={`w-24 h-24 p-2 shadow-sm rounded-full items-center justify-center ${
           type === title.toLowerCase() ? 'bg-[#e5e9e7]' : ''

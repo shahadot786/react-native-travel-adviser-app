@@ -1,11 +1,23 @@
-import { View, Text, SafeAreaView, Image, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  ActivityIndicator,
+} from 'react-native';
 import React, { useState } from 'react';
-import { Attractions, Avatar, Hotels, Restaurants } from '../assets';
+import { Avatar, NotFound } from '../assets';
 import GoogleApi from '../components/GoogleApi';
-import MenuContainer from '../components/MenuContainer';
+import Menu from '../components/Menu';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import ItemCards from '../components/ItemCards';
 
 const DiscoverScreen = () => {
-  const [type, setType] = useState('attractions');
+  const [isLoading, setIsLoading] = useState(false);
+  const [mainData, setMainData] = useState([]);
+
   return (
     <SafeAreaView className="flex-1 bg-white relative">
       <View className="flex-row items-center justify-between px-8 pt-10">
@@ -24,32 +36,49 @@ const DiscoverScreen = () => {
       </View>
       {/* Google Place Api */}
       <GoogleApi />
-      {/* Menus */}
-      <ScrollView>
-        <View className="flex-row items-center justify-between px-8 mt-6">
-          <MenuContainer
-            key={'hotels'}
-            title="Hotels"
-            imageUrl={Hotels}
-            type={type}
-            setType={setType}
-          />
-          <MenuContainer
-            key={'attractions'}
-            title="Attractions"
-            imageUrl={Attractions}
-            type={type}
-            setType={setType}
-          />
-          <MenuContainer
-            key={'restaurants'}
-            title="Restaurants"
-            imageUrl={Restaurants}
-            type={type}
-            setType={setType}
-          />
+      {isLoading ? (
+        <View className="flex-1 items-center justify-center">
+          <ActivityIndicator size="large" color="#15c55d" />
         </View>
-      </ScrollView>
+      ) : (
+        <ScrollView>
+          {/* Menus */}
+          <Menu />
+          {/* items */}
+          <View>
+            <View className="flex-row items-center justify-between px-6 mt-8">
+              <Text className="text-[#15c55d] text-[26px] font-bold">
+                Top Tips
+              </Text>
+              <TouchableOpacity className="flex-row items-center justify-center space-x-2">
+                <Text className="text-[#b8bbb9] text-[18px] font-bold">
+                  Explore
+                </Text>
+                <FontAwesome
+                  name="long-arrow-right"
+                  size={20}
+                  color="#A0C4C7"
+                />
+              </TouchableOpacity>
+            </View>
+            {/* Card  */}
+            {mainData?.length > 0 ? (
+              <>
+                <ItemCards />
+              </>
+            ) : (
+              <>
+                <View className="w-full h-[300px] items-center justify-center space-y-8">
+                  <Image source={NotFound} className="w-28 h-28 object-cover" />
+                  <Text className="text-[#1b1b1d] text-[16px]">
+                    Opps.. No Data Found
+                  </Text>
+                </View>
+              </>
+            )}
+          </View>
+        </ScrollView>
+      )}
     </SafeAreaView>
   );
 };
