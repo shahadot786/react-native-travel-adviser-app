@@ -11,10 +11,10 @@ const MenuContainer = ({ title, imageUrl, type, setType }) => {
       onPress={handelPress}
     >
       <View
-        className={`p-2 shadow-sm border-b-4 items-center justify-center ${
+        className={`p-2 border-[2px] rounded-md items-center justify-center ${
           type === title.toLowerCase()
-            ? 'border-b-[#15c55d]'
-            : 'border-b-[#ffffff]'
+            ? 'border-[#15c55d]'
+            : 'border-[#ffffff]'
         }`}
       >
         <Image source={imageUrl} className="w-16 h-16 object-contain" />

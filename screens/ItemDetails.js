@@ -18,7 +18,7 @@ const ItemDetails = ({ route }) => {
   return (
     <SafeAreaView className="flex-1 bg-white relative">
       <ScrollView className="flex-1 px-4 py-6 pt-12">
-        <View className="relative bg-white shadow-lg">
+        <View className="relative bg-white">
           <Image
             source={{
               uri: data?.photo?.images?.large?.url

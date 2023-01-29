@@ -4,7 +4,7 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 
 const GoogleApi = ({ bl_latData, bl_lngData, tr_latData, tr_lngData }) => {
   return (
-    <View className="flex-row items-center bg-white mx-4 rounded-xl py-1 px-4 shadow-lg border-[1px] border-stone-200 mt-4">
+    <View className="flex-row items-center bg-white mx-4 rounded-xl py-1 px-4 shadow-md border-[1px] border-stone-200 mt-4">
       <GooglePlacesAutocomplete
         GooglePlacesDetailsQuery={{ fields: 'geometry' }}
         placeholder="Search places.."
