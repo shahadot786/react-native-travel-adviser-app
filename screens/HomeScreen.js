@@ -27,7 +27,7 @@ const HomeScreen = () => {
         </Text>
       </View>
       {/* circel section */}
-      <View className="w-[350px] h-[350px] bg-[#15c55d] rounded-full absolute bottom-[150px] -right-36"></View>
+      <View className="w-[300px] h-[300px] bg-[#15c55d] rounded-full absolute bottom-[150px] -right-36"></View>
       <View className="w-[400px] h-[400px] bg-[#cf385e] rounded-full absolute -bottom-28 -left-36"></View>
       {/* image section */}
       <View className="flex-1 relative items-center justify-center">
@@ -38,7 +38,7 @@ const HomeScreen = () => {
           source={HeroImage}
           className="w-full h-full object-cover mt-20"
         />
-        <Button onPress={() => navigation.navigate('Discover')}>Go</Button>
+        <Button onPress={() => navigation.navigate('Discover')}>Tap</Button>
       </View>
     </SafeAreaView>
   );

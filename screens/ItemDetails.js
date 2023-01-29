@@ -17,7 +17,7 @@ const ItemDetails = ({ route }) => {
   const data = route?.params?.param;
   return (
     <SafeAreaView className="flex-1 bg-white relative">
-      <ScrollView className="flex-1 px-4 py-6 pt-12">
+      <ScrollView className="flex-1 px-4 py-6 pt-8">
         <View className="relative bg-white">
           <Image
             source={{
@@ -47,13 +47,13 @@ const ItemDetails = ({ route }) => {
                   </Text>
                   {data?.price ? (
                     <>
-                      <Text className="text-[26px] ml-1 font-bold text-gray-100 shadow-lg">
+                      <Text className="text-[24px] ml-1 font-bold text-gray-100 shadow-lg">
                         {data?.price}
                       </Text>
                     </>
                   ) : (
                     <>
-                      <Text className="text-[26px] ml-1 font-bold text-gray-100 shadow-lg">
+                      <Text className="text-[24px] ml-1 font-bold text-gray-100 shadow-lg">
                         No Data
                       </Text>
                     </>
@@ -78,12 +78,12 @@ const ItemDetails = ({ route }) => {
         </View>
 
         <View className="mt-4">
-          <Text className="text-[#15c55d] text-[24px] font-bold">
+          <Text className="text-[#15c55d] text-[22px] font-bold">
             {data?.name}
           </Text>
           <View className="flex-row items-center space-x-2 mt-2">
             <FontAwesome name="map-marker" size={24} color="#A0C4C7" />
-            <Text className="text-[#A0C4C7] text-[18px] font-bold">
+            <Text className="text-[#A0C4C7] text-[16px] font-bold">
               {data?.location_string}
             </Text>
           </View>
@@ -126,7 +126,7 @@ const ItemDetails = ({ route }) => {
           )}
         </View>
         {data?.description && (
-          <Text className="mt-4 tracking-wide text-[15px] font-semibold text-[#97a6af]">
+          <Text className="mt-4 tracking-wide text-[15px] font-semibold text-[#585858]">
             {data?.description?.length > 200
               ? `${data?.description.slice(0, 200)}..`
               : data?.description}
@@ -167,11 +167,13 @@ const ItemDetails = ({ route }) => {
                 <Text className="text-lg">{data?.address}</Text>
               </View>
             )}
-            <View className="px-4 py-4 rounded-lg bg-[#15c55d] items-center justify-center mb-[20px]">
-              <Text className="text-3xl font-semibold uppercase tracking-wider text-gray-100">
-                Book Now
-              </Text>
-            </View>
+            <TouchableOpacity>
+              <View className="px-4 py-2 rounded-lg bg-[#15c55d] items-center justify-center mb-[20px]">
+                <Text className="text-2xl font-semibold uppercase tracking-wider text-gray-100">
+                  Book Now
+                </Text>
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>

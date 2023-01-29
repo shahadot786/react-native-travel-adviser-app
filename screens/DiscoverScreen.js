@@ -84,7 +84,7 @@ const DiscoverScreen = () => {
             </View>
             {/* Card  */}
             {mainData?.length > 0 ? (
-              <View className="flex-row mt-8 flex-wrap justify-between">
+              <View className="flex-col mt-8 justify-center">
                 <ItemCards cardData={mainData} />
               </View>
             ) : (
