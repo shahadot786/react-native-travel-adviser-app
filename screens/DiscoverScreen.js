@@ -18,16 +18,21 @@ import { getPlaceData } from '../api';
 const DiscoverScreen = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [mainData, setMainData] = useState([]);
+  const [bl_lat, setBl_lat] = useState(null);
+  const [bl_lng, setBl_lng] = useState(null);
+  const [tr_lat, setTr_lat] = useState(null);
+  const [tr_lng, setTr_lng] = useState(null);
+  const [type, setType] = useState('restaurants');
 
   useEffect(() => {
     setIsLoading(true);
-    getPlaceData().then((data) => {
+    getPlaceData(bl_lat, bl_lng, tr_lat, tr_lng, type).then((data) => {
       setMainData(data);
       setInterval(() => {
         setIsLoading(false);
       }, 2000);
     });
-  }, []);
+  }, [bl_lat, bl_lng, tr_lat, tr_lng, type]);
 
   return (
     <SafeAreaView className="flex-1 bg-white relative">
@@ -46,7 +51,12 @@ const DiscoverScreen = () => {
         </View>
       </View>
       {/* Google Place Api */}
-      <GoogleApi />
+      <GoogleApi
+        bl_latData={setBl_lat}
+        bl_lngData={setBl_lng}
+        tr_latData={setTr_lat}
+        tr_lngData={setTr_lng}
+      />
       {isLoading ? (
         <View className="flex-1 items-center justify-center">
           <ActivityIndicator size="large" color="#15c55d" />
@@ -54,7 +64,7 @@ const DiscoverScreen = () => {
       ) : (
         <ScrollView>
           {/* Menus */}
-          <Menu />
+          <Menu type={type} setType={setType} />
           {/* items */}
           <View>
             <View className="flex-row items-center justify-between px-6 mt-8">
@@ -76,7 +86,7 @@ const DiscoverScreen = () => {
             {mainData?.length > 0 ? (
               <>
                 <View className="flex-row flex-wrap mt-8">
-                <ItemCards cardData={mainData} />
+                  <ItemCards cardData={mainData} />
                 </View>
               </>
             ) : (

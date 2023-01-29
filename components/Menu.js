@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import MenuContainer from './MenuContainer';
 import { Attractions, Hotels, Restaurants } from '../assets';
 
-const Menu = () => {
-  const [type, setType] = useState('restaurants');
+const Menu = ({ type, setType }) => {
   return (
     <View className="flex-row items-center justify-between px-8 mt-6">
       <MenuContainer
