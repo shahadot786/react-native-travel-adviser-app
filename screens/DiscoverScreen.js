@@ -58,16 +58,16 @@ const DiscoverScreen = () => {
           {/* items */}
           <View>
             <View className="flex-row items-center justify-between px-6 mt-8">
-              <Text className="text-[#15c55d] text-[26px] font-bold">
+              <Text className="text-[#15c55d] text-[24px] font-bold">
                 Top Tips
               </Text>
               <TouchableOpacity className="flex-row items-center justify-center space-x-2">
-                <Text className="text-[#b8bbb9] text-[18px] font-bold">
+                <Text className="text-[#b8bbb9] text-[16px] font-bold">
                   Explore
                 </Text>
                 <FontAwesome
                   name="long-arrow-right"
-                  size={20}
+                  size={16}
                   color="#A0C4C7"
                 />
               </TouchableOpacity>

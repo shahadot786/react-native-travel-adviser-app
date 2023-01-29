@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
 import DiscoverScreen from './screens/DiscoverScreen';
+import ItemDetails from './screens/ItemDetails';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,13 @@ export default function App() {
         <Stack.Screen
           name="Discover"
           component={DiscoverScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="ItemsDetails"
+          component={ItemDetails}
           options={{
             headerShown: false,
           }}
